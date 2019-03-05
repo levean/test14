@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfkr.achievement.dao.AchievementMapper">
+  <resultMap id="BaseResultMap" type="com.zfkr.achievement.bean.Achievement">
+    <id column="a_id" jdbcType="INTEGER" property="aId" />
+    <result column="type" jdbcType="BIT" property="type" />
+    <result column="contract_id" jdbcType="INTEGER" property="contractId" />
+    <result column="contract_code" jdbcType="VARCHAR" property="contractCode" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="house_code" jdbcType="VARCHAR" property="houseCode" />
+    <result column="cont_type" jdbcType="BIT" property="contType" />
+    <result column="sign_date" jdbcType="TIMESTAMP" property="signDate" />
+    <result column="recei_commission" jdbcType="DECIMAL" property="receiCommission" />
+    <result column="damagesFee" jdbcType="DECIMAL" property="damagesfee" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="result" jdbcType="BIT" property="result" />
+    <result column="auditor_id" jdbcType="INTEGER" property="auditorId" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="auditor_department" jdbcType="VARCHAR" property="auditorDepartment" />
+    <result column="examine_date" jdbcType="TIMESTAMP" property="examineDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="INTEGER" property="createBy" />
+    <result column="create_by_name" jdbcType="VARCHAR" property="createByName" />
+    <result column="create_dep_id" jdbcType="INTEGER" property="createDepId" />
+    <result column="create_dep_name" jdbcType="VARCHAR" property="createDepName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="INTEGER" property="updateBy" />
+    <result column="update_by_name" jdbcType="VARCHAR" property="updateByName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="pre_audit_id" jdbcType="INTEGER" property="preAuditId" />
+    <result column="pre_audit_name" jdbcType="VARCHAR" property="preAuditName" />
+    <result column="next_audit_id" jdbcType="INTEGER" property="nextAuditId" />
+    <result column="next_audit_name" jdbcType="VARCHAR" property="nextAuditName" />
+    <result column="flow_instance_id" jdbcType="INTEGER" property="flowInstanceId" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+      <collection property="distributions"
+                  ofType="com.zfkr.achievement.bean.Distribution"
+                  javaType="java.util.List"
+                  column="contract_id" select="com.zfkr.achievement.dao.DistributionMapper.getDistributionByContId">
+        <id column="d_id" jdbcType="INTEGER" property="dId" />
+        <result column="contract_id" jdbcType="INTEGER" property="contractId" />
+        <result column="contractCode" jdbcType="VARCHAR" property="contractCode" />
+        <result column="storefront3_id" jdbcType="INTEGER" property="storefront3Id" />
+        <result column="level3" jdbcType="VARCHAR" property="level3" />
+        <result column="storefront4_id" jdbcType="INTEGER" property="storefront4Id" />
+        <result column="level4" jdbcType="VARCHAR" property="level4" />
+        <result column="assignor_id" jdbcType="INTEGER" property="assignorId" />
+        <result column="assignor" jdbcType="VARCHAR" property="assignor" />
+        <result column="role_type" jdbcType="TINYINT" property="roleType" />
+        <result column="ratio" jdbcType="DECIMAL" property="ratio" />
+        <result column="is_job" jdbcType="BIT" property="isJob" />
+        <result column="shopkeeper_id" jdbcType="INTEGER" property="shopkeeperId" />
+        <result column="shopkeeper" jdbcType="VARCHAR" property="shopkeeper" />
+        <result column="amaldar_id" jdbcType="INTEGER" property="amaldarId" />
+        <result column="amaldar" jdbcType="VARCHAR" property="amaldar" />
+        <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+        <result column="manager" jdbcType="VARCHAR" property="manager" />
+        <result column="place" jdbcType="BIT" property="place" />
+        <result column="agent_examine" jdbcType="BIT" property="agentExamine" />
+        <result column="agent_remark" jdbcType="VARCHAR" property="agentRemark" />
+        <result column="a_money" jdbcType="DECIMAL" property="aMoney" />
+        <result column="agent_receipts" jdbcType="DECIMAL" property="agentReceipts" />
+        <result column="agentPlatform_fee" jdbcType="DECIMAL" property="agentplatformFee" />
+        <result column="agentPay_fee" jdbcType="DECIMAL" property="agentpayFee" />
+        <result column="platform_fee_ratio" jdbcType="DECIMAL" property="platformFeeRatio" />
+        <result column="s_achievement" jdbcType="DECIMAL" property="sAchievement" />
+        <result column="s_cost" jdbcType="DECIMAL" property="sCost" />
+        <result column="s_money" jdbcType="DECIMAL" property="sMoney" />
+        <result column="createBy" jdbcType="INTEGER" property="createBy" />
+        <result column="createByName" jdbcType="VARCHAR" property="createByName" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="updateBy" jdbcType="INTEGER" property="updateBy" />
+        <result column="updateByName" jdbcType="VARCHAR" property="updateByName" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="isDel" jdbcType="BIT" property="isDel" />
+      </collection>
+  </resultMap>
+<sql id="Base_Column_List">
+  a.a_id,a.type, a.contract_id, a.contract_code, a.customer_code, a.house_code, a.cont_type, a.sign_date,
+  a.recei_commission, a.damagesFee, a.money, a.`result`, a.auditor_id, a.auditor, a.auditor_department,
+  a.examine_date, a.remark, a.create_by, a.create_by_name, a.create_dep_id, a.create_dep_name,
+  a.create_time, a.update_by, a.update_by_name, a.update_time, a.is_del, a.pre_audit_id, a.pre_audit_name,
+  a.next_audit_id, a.next_audit_name, a.flow_instance_id, a.city_id
+</sql>
+
+<select id="getAchList" resultMap="BaseResultMap">
+select
+  <include refid="Base_Column_List"/>
+from
+  b_achievement as a
+</select>
+
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfkr.achievement.dao.DistributionMapper">
+  <resultMap id="BaseResultMap" type="com.zfkr.achievement.bean.Distribution">
+    <id column="d_id" jdbcType="INTEGER" property="dId" />
+    <result column="contract_id" jdbcType="INTEGER" property="contractId" />
+    <result column="contract_code" jdbcType="VARCHAR" property="contractCode" />
+    <result column="storefront3_id" jdbcType="INTEGER" property="storefront3Id" />
+    <result column="level3" jdbcType="VARCHAR" property="level3" />
+    <result column="storefront4_id" jdbcType="INTEGER" property="storefront4Id" />
+    <result column="level4" jdbcType="VARCHAR" property="level4" />
+    <result column="assignor_id" jdbcType="INTEGER" property="assignorId" />
+    <result column="assignor" jdbcType="VARCHAR" property="assignor" />
+    <result column="role_type" jdbcType="TINYINT" property="roleType" />
+    <result column="ratio" jdbcType="DECIMAL" property="ratio" />
+    <result column="is_job" jdbcType="BIT" property="isJob" />
+    <result column="shopkeeper_id" jdbcType="INTEGER" property="shopkeeperId" />
+    <result column="shopkeeper" jdbcType="VARCHAR" property="shopkeeper" />
+    <result column="amaldar_id" jdbcType="INTEGER" property="amaldarId" />
+    <result column="amaldar" jdbcType="VARCHAR" property="amaldar" />
+    <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+    <result column="manager" jdbcType="VARCHAR" property="manager" />
+    <result column="place" jdbcType="BIT" property="place" />
+    <result column="agent_examine" jdbcType="BIT" property="agentExamine" />
+    <result column="agent_remark" jdbcType="VARCHAR" property="agentRemark" />
+    <result column="a_money" jdbcType="DECIMAL" property="aMoney" />
+    <result column="agent_receipts" jdbcType="DECIMAL" property="agentReceipts" />
+    <result column="agentPlatform_fee" jdbcType="DECIMAL" property="agentplatformFee" />
+    <result column="agentPay_fee" jdbcType="DECIMAL" property="agentpayFee" />
+    <result column="platform_fee_ratio" jdbcType="DECIMAL" property="platformFeeRatio" />
+    <result column="s_achievement" jdbcType="DECIMAL" property="sAchievement" />
+    <result column="s_cost" jdbcType="DECIMAL" property="sCost" />
+    <result column="s_money" jdbcType="DECIMAL" property="sMoney" />
+    <result column="create_by" jdbcType="INTEGER" property="createBy" />
+    <result column="create_by_name" jdbcType="VARCHAR" property="createByName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="INTEGER" property="updateBy" />
+    <result column="update_by_name" jdbcType="VARCHAR" property="updateByName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    d_id, contract_id, contract_code, storefront3_id, level3, storefront4_id, level4, 
+    assignor_id, assignor, role_type, ratio, is_job, shopkeeper_id, shopkeeper, amaldar_id, 
+    amaldar, manager_id, manager, place, agent_examine, agent_remark, a_money, agent_receipts, 
+    agentPlatform_fee, agentPay_fee, platform_fee_ratio, s_achievement, s_cost, s_money, 
+    create_by, create_by_name, create_time, update_by, update_by_name, update_time, is_del
+  </sql>
+  <sql id="Distribution_Column_List">
+  d.d_id,d.contract_id as contractId, d.contract_code as contractCode, d.storefront3_id, d.level3,d.storefront4_id, d.level4,
+  d.assignor_id, d.assignor, d.role_type, d.ratio, d.is_job, d.shopkeeper_id, d.shopkeeper, d.amaldar_id,
+  d.amaldar, d.manager_id, d.manager, d.place, agent_examine, d.agent_remark, d.a_money, d.agent_receipts,
+  d.agentPlatform_fee, d.agentPay_fee, d.platform_fee_ratio, d.s_achievement, d.s_cost, d.s_money,
+  d.create_by as createBy, d.create_by_name as createByName, d.create_time as createTime, d.update_by as updateBy,
+  d.update_by_name as updateByName, d.update_time as updateTime, d.is_del as isDel
+</sql>
+
+<select id="getDistributionByContId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  select
+  <include refid="Distribution_Column_List" />
+  from b_distribution as d
+  where contract_id = #{contractId,jdbcType=INTEGER}
+</select>
+
+</mapper>
